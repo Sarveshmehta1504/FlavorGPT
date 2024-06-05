@@ -1,6 +1,8 @@
 package com.example.flavorgpt.Screen
 
+import android.widget.Space
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -21,11 +23,14 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
@@ -39,7 +44,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,8 +54,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.flavorgpt.R
 import com.example.flavorgpt.navigation.Screen
 import com.example.flavorgpt.ui.theme.LightTransparentWhite
+import com.example.flavorgpt.ui.theme.btnPurple
 
 @Composable
 fun ChoosePlaneScreen(
@@ -140,12 +149,15 @@ fun ChoosePlaneScreen(
                                     .clip(RoundedCornerShape(9.dp))
                                     .background(
                                         if (text == selectedOption) {
+                                            visible = true
                                             LightTransparentWhite
                                         } else {
+                                            visible = false
                                             Color.White
                                         }
                                     ),
-                                contentAlignment = Alignment.Center
+                                contentAlignment = Alignment.Center,
+
                             ){
                                 Text(
                                     modifier = Modifier.padding(5.dp),
@@ -159,27 +171,113 @@ fun ChoosePlaneScreen(
                         }
                     }
                 }
-
-                VerticalDivider(
-                    modifier = Modifier
-                        .height(300.dp)
-                        .heightIn(300.dp, 700.dp)
-                        .align(Alignment.CenterHorizontally),
-                    color = Color.LightGray,
-                    thickness = 1.dp
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "Chat Display Name",
+                Row (
                     modifier = Modifier.fillMaxWidth(),
-                    style = TextStyle(
-                        fontSize = 15.sp,
-                        lineHeight = 22.sp,
-                        fontWeight = FontWeight(400),
-                        color = Color.Black,
-
+                        horizontalArrangement = Arrangement.SpaceBetween
+                ){
+                    Column(
+                        modifier = Modifier.padding(start = 8.dp),
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Image(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(id = R.drawable.star),
+                                contentDescription = "star"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                style = TextStyle(
+                                    fontSize = 20.sp
+                                ),
+                                text = "BASIC"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Text(text = "$4.99/month")
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Text(
+                            style = TextStyle(
+                                color = Color.Gray,
+                                fontSize = 13.sp
+                            ),
+                            text = "billed yearly $59.88/year"
                         )
-                )
+                        Spacer(modifier = Modifier.height(25.dp))
+                        Button(
+                            modifier = Modifier
+                                .size(150.dp, 35.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                            ,
+                            onClick = { /*TODO*/ },
+                            shape = RoundedCornerShape(7.dp),
+                            colors = ButtonDefaults.buttonColors(btnPurple)
+
+                        ){
+                            Text(
+                                text = "Upgrade now",
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 15.sp,
+                                    textAlign = TextAlign.Center
+                                )
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Use your API keys"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(1.dp))
+                        Row {
+                            Spacer(modifier = Modifier.width(28.dp))
+                            Text(
+                                modifier = Modifier.size(120.dp,40.dp),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "to access OpenAI," +
+                                        "Mistral, Claude,Gemini, and" +
+                                        "Preplexity"
+                            )
+                        }
+
+                    }
+
+                    VerticalDivider(
+                        modifier = Modifier
+                            .height(300.dp)
+                            .heightIn(300.dp, 700.dp) ,
+                        color = Color.LightGray,
+                        thickness = 1.dp
+                    )
+                    Column(
+                        modifier = Modifier.padding(horizontal = 10.dp)
+                    ){
+
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
                 Spacer(modifier = Modifier.height(5.dp))
 
 

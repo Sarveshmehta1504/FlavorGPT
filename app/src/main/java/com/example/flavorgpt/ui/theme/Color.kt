@@ -15,3 +15,4 @@ val TextColor = Color(0xFF1D1617)
 val GrayColor = Color(0xFF7B6F72)
 
 val LightTransparentWhite = Color(0xFFE4E4E4)
+val btnPurple = Color(0xFF844BFF)
