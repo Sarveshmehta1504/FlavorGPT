@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.flavorgpt.Screen.HomeScreen
 import com.example.flavorgpt.Screen.LoginScreen
 import com.example.flavorgpt.Screen.SignUpScreen
+import com.example.flavorgpt.Screen.WelcomeScreen
 
 @Composable
 fun SetupNavGraph(
@@ -21,6 +22,9 @@ fun SetupNavGraph(
         }
         composable(route = Screen.SignUp.route){
             SignUpScreen(navController)
+        }
+        composable(route = Screen.Welcome.route){
+            WelcomeScreen(navController)
         }
     }
 }

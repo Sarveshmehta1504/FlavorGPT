@@ -44,6 +44,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -68,6 +69,7 @@ fun ChoosePlaneScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
+        val uriHandler = LocalUriHandler.current
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -176,7 +178,6 @@ fun ChoosePlaneScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                 ){
                     Column(
-                        modifier = Modifier.padding(start = 8.dp),
                         verticalArrangement = Arrangement.Center
                     ){
                         Row(
@@ -211,7 +212,9 @@ fun ChoosePlaneScreen(
                                 .size(150.dp, 35.dp)
                                 .clip(RoundedCornerShape(8.dp))
                             ,
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                uriHandler.openUri("https://pages.razorpay.com/FlavorGPT-Basic-Y-Individual")
+                                      },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(btnPurple)
 
@@ -254,34 +257,268 @@ fun ChoosePlaneScreen(
                                     fontWeight = FontWeight.Normal,
                                     fontSize = 10.sp
                                 ),
-                                text = "to access OpenAI," +
-                                        "Mistral, Claude,Gemini, and" +
+                                text = "to access OpenAI, " +
+                                        "Mistral, Claude,Gemini, and " +
                                         "Preplexity"
                             )
                         }
-
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Access to all AI Assistants"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "AI Image Generation"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "GPT-4 Vision"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Web Browsing"
+                            )
+                        }
                     }
 
                     VerticalDivider(
                         modifier = Modifier
-                            .height(300.dp)
+                            .height(250.dp)
                             .heightIn(300.dp, 700.dp) ,
                         color = Color.LightGray,
                         thickness = 1.dp
                     )
                     Column(
-                        modifier = Modifier.padding(horizontal = 10.dp)
+                        verticalArrangement = Arrangement.Center
                     ){
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Image(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(id = R.drawable.star),
+                                contentDescription = "star"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                style = TextStyle(
+                                    fontSize = 20.sp
+                                ),
+                                text = "PRO"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Text(text = "$17.99/month")
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Text(
+                            style = TextStyle(
+                                color = Color.Gray,
+                                fontSize = 13.sp
+                            ),
+                            text = "billed yearly $215.88/year"
+                        )
+                        Spacer(modifier = Modifier.height(25.dp))
+                        Button(
+                            modifier = Modifier
+                                .size(150.dp, 35.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                            ,
+                            onClick = {
+                                uriHandler.openUri("https://pages.razorpay.com/FlavorGPT-PRO-Y-Individual")
+                                      },
+                            shape = RoundedCornerShape(7.dp),
+                            colors = ButtonDefaults.buttonColors(btnPurple)
+
+                        ){
+                            Text(
+                                text = "Upgrade now",
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 15.sp,
+                                    textAlign = TextAlign.Center
+                                )
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 10.sp
+                                ),
+                                text = "No API keys required."
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(1.dp))
+                        Row {
+                            Spacer(modifier = Modifier.width(28.dp))
+                            Text(
+                                modifier = Modifier.size(120.dp,40.dp),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Unlimited access to OpenAl, Mistral, Claude, Gemini, and Perplexity"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Access to all AI Assistants"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "GPT-4 Vision"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "AI Image Generation"
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                modifier = Modifier.size(13.dp),
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = "Check"
+                            )
+                            Spacer(modifier = Modifier.width(15.dp))
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterVertically),
+                                style = TextStyle(
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 10.sp
+                                ),
+                                text = "Web Browsing"
+                            )
+                        }
 
                     }
+
                 }
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Spacer(modifier = Modifier.height(5.dp))
-
-
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(20.dp))
                 Row (
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -300,7 +537,7 @@ fun ChoosePlaneScreen(
                                 .clip(RoundedCornerShape(8.dp))
                             ,
                             onClick = {
-                                navController.navigate(Screen.Home.route)
+                                    navController.navigate(Screen.Welcome.route)
                             },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(Color.Transparent)
