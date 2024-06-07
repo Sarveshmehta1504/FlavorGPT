@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.flavorgpt.Screen.ChoosePlaneScreen
+import com.example.flavorgpt.Screen.FinishScreen
 import com.example.flavorgpt.Screen.HomeScreen
 import com.example.flavorgpt.Screen.LoginScreen
 import com.example.flavorgpt.Screen.SignUpScreen
@@ -25,6 +27,12 @@ fun SetupNavGraph(
         }
         composable(route = Screen.Welcome.route){
             WelcomeScreen(navController)
+        }
+        composable(route = Screen.Welcome.route){
+            ChoosePlaneScreen(navController)
+        }
+        composable(route = Screen.Finish.route){
+            FinishScreen(navController)
         }
     }
 }

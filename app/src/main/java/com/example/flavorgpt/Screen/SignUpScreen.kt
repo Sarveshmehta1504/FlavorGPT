@@ -67,7 +67,7 @@ fun SignUpScreen(
     ) {
         Card(
             colors = CardDefaults.cardColors(
-                containerColor = LightTransparentWhite
+                containerColor = Color.White
             ),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 10.dp
@@ -128,7 +128,7 @@ fun SignUpScreen(
                             shape = RoundedCornerShape(size = 10.dp)
                         ),
                     onClick = {
-                              navController.navigate(Screen.Home.route)
+                              navController.navigate(Screen.Welcome.route)
                     },
                     shape = RoundedCornerShape(7.dp),
                     colors = ButtonDefaults.buttonColors(Color.Transparent)
@@ -183,7 +183,7 @@ fun MyTextField(labelValue: String) {
 fun GoogleButton(value: String, navController: NavController) {
     Button(
         onClick = {
-            navController.navigate(Screen.Home.route)
+            navController.navigate(Screen.Welcome.route)
         },
         modifier = Modifier
             .fillMaxWidth()

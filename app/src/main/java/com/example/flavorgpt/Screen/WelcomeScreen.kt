@@ -88,7 +88,7 @@ fun WelcomeScreen(
                 ){
                     Text(
                         textAlign = TextAlign.Start,
-                        text = "Welcome to FlavorGPT",
+                         text = "Welcome to FlavorGPT",
                         style = TextStyle(
                             fontSize = 20.sp,
                         )
@@ -173,7 +173,7 @@ fun WelcomeScreen(
                         .align(Alignment.CenterHorizontally)
                         .heightIn(30.dp),
                     onClick = {
-                        navController.navigate(Screen.Home.route)
+                        navController.navigate(Screen.ChoosePlan.route)
                     },
                     shape = RoundedCornerShape(7.dp),
                     colors = ButtonDefaults.buttonColors(Color.Black)

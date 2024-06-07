@@ -64,6 +64,18 @@ import com.example.flavorgpt.ui.theme.btnPurple
 fun ChoosePlaneScreen(
     navController: NavController,
 ){
+    val options = listOf(
+        "Yearly",
+        "Monthly"
+    )
+    var selectedOption by remember {
+        mutableStateOf("")
+    }
+    val onSelectionChange = { text: String ->
+        selectedOption = text
+    }
+    var visible by remember { mutableStateOf(true) }
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -127,17 +139,6 @@ fun ChoosePlaneScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
-                    val options = listOf(
-                        "Yearly",
-                        "Monthly"
-                    )
-                    var selectedOption by remember {
-                        mutableStateOf("")
-                    }
-                    val onSelectionChange = { text: String ->
-                        selectedOption = text
-                    }
-                    var visible by remember { mutableStateOf(true) }
 
                     options.forEach{text ->
                         Row{
@@ -199,6 +200,7 @@ fun ChoosePlaneScreen(
                         Spacer(modifier = Modifier.height(3.dp))
                         Text(text = "$4.99/month")
                         Spacer(modifier = Modifier.height(3.dp))
+
                         Text(
                             style = TextStyle(
                                 color = Color.Gray,
@@ -591,7 +593,7 @@ fun ChoosePlaneScreen(
                                 .heightIn(34.dp)
                                 .widthIn(80.dp),
                             onClick = {
-                                navController.navigate(Screen.Home.route)
+                                navController.navigate(Screen.Finish.route)
                             },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(Color.Black)
